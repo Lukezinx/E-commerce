@@ -1,5 +1,6 @@
 package lucas.ecommerce.Controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lucas.ecommerce.DTOs.Orders.OrdersDTO;
 import lucas.ecommerce.DTOs.Orders.OrdersResponseDTO;
@@ -20,7 +21,7 @@ public class OrdersController {
     private OrdersService ordersService;
 
     @PostMapping
-    public ResponseEntity<OrdersResponseDTO> createOrders(@RequestBody OrdersDTO dto) {
+    public ResponseEntity<OrdersResponseDTO> createOrders(@Valid @RequestBody OrdersDTO dto) {
 
         OrdersResponseDTO saveOrder = ordersService.CreateOrders(dto);
 
@@ -36,7 +37,7 @@ public class OrdersController {
 
 
     @PatchMapping("{id}")
-    public ResponseEntity<Void> updateOrders(@PathVariable UUID id) {
+    public ResponseEntity<Void> updateOrders(@Valid @PathVariable UUID id) {
         ordersService.CancelOrders(id);
 
         return ResponseEntity.noContent().build();

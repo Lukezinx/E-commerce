@@ -1,6 +1,10 @@
 package lucas.ecommerce.DTOs.Category;
 
-public record CategoryDTO(String name){
+import jakarta.validation.constraints.NotBlank;
+
+public record CategoryDTO(
+        @NotBlank(message = "Category name required")
+        String name){
 
 
 }

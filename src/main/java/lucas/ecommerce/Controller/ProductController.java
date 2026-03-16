@@ -1,5 +1,6 @@
 package lucas.ecommerce.Controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lucas.ecommerce.DTOs.Mappers.ProductMapper;
 import lucas.ecommerce.DTOs.Products.ProductDTO;
@@ -28,7 +29,7 @@ public class ProductController {
 
 
     @PostMapping
-    public ResponseEntity<Object> saveProduct(@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<Object> saveProduct(@Valid @RequestBody ProductDTO productDTO) {
         Product product = mapper.toEntity(productDTO);
         productService.saveProduct(product);
 
@@ -42,7 +43,7 @@ public class ProductController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable String id,@RequestBody ProductDTO productDTO) {
+    public ResponseEntity<Object> updateProduct(@Valid @PathVariable String id,@RequestBody ProductDTO productDTO) {
             return productService.obtainProductId(UUID.fromString(id)).map(product -> {
                 Product productAux = mapper.toEntity(productDTO);
 
@@ -62,7 +63,7 @@ public class ProductController {
 
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Object> deleteProduct(@PathVariable String id) {
+    public ResponseEntity<Object> deleteProduct(@Valid @PathVariable String id) {
         Optional<Product> productOptional = productService.obtainProductId(UUID.fromString(id));
         if (productOptional.isEmpty()) return ResponseEntity.notFound().build();
 

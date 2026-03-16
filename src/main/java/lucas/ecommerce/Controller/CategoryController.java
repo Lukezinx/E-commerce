@@ -1,5 +1,6 @@
 package lucas.ecommerce.Controller;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lucas.ecommerce.DTOs.Category.CategoryDTO;
 import lucas.ecommerce.DTOs.Category.CategoryResponseDTO;
@@ -23,7 +24,7 @@ public class CategoryController {
     private CategoryMapper mapper;
 
     @PostMapping
-    public ResponseEntity<Object> saveCategory(@RequestBody CategoryDTO category) {
+    public ResponseEntity<Object> saveCategory(@Valid @RequestBody CategoryDTO category) {
         Category categoryMapper = mapper.toEntity(category);
         categoryService.saveCategory(categoryMapper);
 
