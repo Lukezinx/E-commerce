@@ -6,15 +6,13 @@ import lucas.ecommerce.DTOs.Mappers.OrdersMapper;
 import lucas.ecommerce.DTOs.Orders.OrdersDTO;
 import lucas.ecommerce.DTOs.Orders.OrdersResponseDTO;
 import lucas.ecommerce.DTOs.OrdersItems.OrdersItemsDTO;
-import lucas.ecommerce.Model.OrderItems;
-import lucas.ecommerce.Model.Orders;
-import lucas.ecommerce.Model.Product;
-import lucas.ecommerce.Model.Status;
+import lucas.ecommerce.Model.*;
 import lucas.ecommerce.Repository.OrdersRepository;
 import lucas.ecommerce.Repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -35,6 +33,15 @@ public class OrdersService {
         Orders orders = new Orders();
         orders.setCreationDate(LocalDate.now());
         orders.setOrderStatus(Status.PENDING);
+
+
+        var authentication = SecurityContextHolder.getContext().getAuthentication();
+        User loggedUser = (User) authentication.getPrincipal();
+
+        if (loggedUser == null) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        }
+        orders.setUser(loggedUser);
 
         for (OrdersItemsDTO items : request.items()) {
 

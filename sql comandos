@@ -37,13 +37,9 @@ create table order_items(
 
 );
 
-Tabela usuarios (O Coração do Spring Security)
-Esta tabela vai gerenciar quem acessa o sistema. É ela que o Spring Security vai consultar na hora do login.
-
-id: Chave primária (PK).
-
-email: Único, usado como login (o famoso username do Spring).
-
-senha: Aqui você nunca salva a senha em texto limpo; o Spring Security vai gerar um hash (geralmente usando BCrypt) para salvar aqui.
-
-role: O perfil de acesso (ex: ROLE_ADMIN para você gerenciar a loja, ROLE_CLIENTE para quem vai comprar).
+create table users (
+    id UUID NOT NULL PRIMARY KEY,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL
+)

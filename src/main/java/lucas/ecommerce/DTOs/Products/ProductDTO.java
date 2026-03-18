@@ -21,6 +21,7 @@ public record ProductDTO(
         @NotNull(message = "The quantity stock can't be empty/black")
         @Min(0)
         Integer quantityStock,
-        @NotBlank(message = "need to pass a category")
+
+        @NotNull(message = "need to pass a category")
         Integer categoryId){
 }

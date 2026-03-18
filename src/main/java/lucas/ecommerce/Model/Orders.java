@@ -32,6 +32,10 @@ public class Orders {
     @Column(name = "status")
     private Status orderStatus;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     @OneToMany( mappedBy = "order",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItems> items = new ArrayList<>();
 

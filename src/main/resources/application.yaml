@@ -6,3 +6,8 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+
+api:
+  security:
+    token:
+      secret: ${JWT_SECRET:minha-chave-secreta-de-desenvolvimento-123}
