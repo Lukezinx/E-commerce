@@ -20,8 +20,8 @@ Este projeto simula o back-end de uma loja virtual. O sistema permite a gestão 
 ## 📸 Documentação Interativa (Swagger)
 A API está totalmente documentada utilizando o SpringDoc OpenAPI.
 
-![Print do Swagger da API](Coloque_aqui_o_link_para_a_sua_imagem_do_swagger.png)
-*> Dica: Adicione aqui um print do Swagger com o cadeado do JWT fechado.*
+![Print do Swagger da API](<img width="2481" height="1171" alt="image" src="https://github.com/user-attachments/assets/94fe8316-6d3b-449b-b150-973cb4969d69" />
+)
 
 ## 🚀 Tecnologias Utilizadas
 * **Java 17**
