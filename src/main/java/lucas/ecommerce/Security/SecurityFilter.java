@@ -41,7 +41,7 @@ public class SecurityFilter  extends OncePerRequestFilter {
 
                 var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 
-                // 5. Salva a autenticação no contexto do Spring (Avisa que o usuário está logado!)
+
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
