@@ -17,12 +17,6 @@ Este projeto simula o back-end de uma loja virtual. O sistema permite a gestão 
 - Tratamento padronizado de erros globais (Global Exception Handler).
 - Validação rigorosa de dados de entrada com Jakarta Validation.
 
-## 📸 Documentação Interativa (Swagger)
-A API está totalmente documentada utilizando o SpringDoc OpenAPI.
-
-![Print do Swagger da API](<img width="2481" height="1171" alt="image" src="https://github.com/user-attachments/assets/94fe8316-6d3b-449b-b150-973cb4969d69" />
-)
-
 ## 🚀 Tecnologias Utilizadas
 * **Java 17**
 * **Spring Boot 3** (Web, Data JPA, Security, Validation)
