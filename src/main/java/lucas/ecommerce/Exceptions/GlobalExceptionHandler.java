@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<StandartError> handleDatabaseException(org.springframework.dao.DataIntegrityViolationException ex, HttpServletRequest request) {
+    public ResponseEntity<StandartError> handleDatabaseException(DataIntegrityViolationException ex, HttpServletRequest request) {
         StandartError error = new StandartError(
                 LocalDate.now(),
                 HttpStatus.CONFLICT.value(),
@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<StandartError> handleMessageNotReadable(org.springframework.http.converter.HttpMessageNotReadableException ex, HttpServletRequest request) {
+    public ResponseEntity<StandartError> handleMessageNotReadable(HttpMessageNotReadableException ex, HttpServletRequest request) {
         StandartError error = new StandartError(
                 LocalDate.now(),
                 HttpStatus.BAD_REQUEST.value(),
